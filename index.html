@@ -752,20 +752,34 @@
         }
 
         @media (max-width: 480px) {
+            header {
+                padding: 10px 0;
+            }
+
             .header-container {
                 flex-direction: row;
                 justify-content: space-between;
-                gap: 5px;
+                align-items: center;
+                gap: 15px;
+                padding: 0 15px;
+                flex-wrap: nowrap;
+            }
+
+            .logo {
+                flex-shrink: 0;
             }
 
             .logo img {
-                height: 40px !important;
+                height: 35px !important;
+                width: auto;
             }
 
             .header-container > div:last-child {
-                gap: 8px;
+                gap: 15px;
                 align-items: center;
                 display: flex;
+                flex-wrap: nowrap;
+                flex-shrink: 0;
             }
 
             .phone-info {
