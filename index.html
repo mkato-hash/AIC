@@ -205,6 +205,268 @@
             opacity: 0.9;
         }
 
+        /* ============ バナー ============ */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@900&family=Noto+Sans+JP:wght@400;700;900&display=swap');
+
+        .banner-wrap {
+            width: 100%;
+            background: linear-gradient(135deg, #1a1008 0%, #2d1e00 40%, #1a1008 100%);
+            border-radius: 16px;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bg-rays {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .ray {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 3px;
+            background: linear-gradient(to right, transparent 0%, rgba(218, 165, 32, 0.15) 40%, rgba(218, 165, 32, 0.35) 60%, transparent 100%);
+            transform-origin: 0% 50%;
+            animation: rayRotate 8s linear infinite;
+        }
+
+        .ray:nth-child(1) { transform: rotate(0deg); }
+        .ray:nth-child(2) { transform: rotate(20deg); }
+        .ray:nth-child(3) { transform: rotate(40deg); }
+        .ray:nth-child(4) { transform: rotate(60deg); }
+        .ray:nth-child(5) { transform: rotate(80deg); }
+        .ray:nth-child(6) { transform: rotate(100deg); }
+        .ray:nth-child(7) { transform: rotate(120deg); }
+        .ray:nth-child(8) { transform: rotate(140deg); }
+        .ray:nth-child(9) { transform: rotate(160deg); }
+
+        .glow-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(218, 165, 32, 0.2) 0%, rgba(218, 165, 32, 0.05) 50%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+        }
+
+        .banner-wrap .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 48px 40px;
+            width: 100%;
+        }
+
+        .top-label {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.4em;
+            color: rgba(218, 165, 32, 0.8);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            animation: fadeInDown 0.8s ease both;
+        }
+
+        .main-number {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0;
+            line-height: 1;
+            margin-bottom: 0;
+            animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+        }
+
+        .num-prefix {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: #f5e090;
+            letter-spacing: 0.05em;
+            padding-bottom: 8px;
+        }
+
+        .num-big {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 140px;
+            font-weight: 900;
+            background: linear-gradient(180deg, #fff9d6 0%, #daa520 50%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            filter: drop-shadow(0 0 40px rgba(218, 165, 32, 0.6));
+        }
+
+        .num-suffix {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: #f5e090;
+            letter-spacing: 0.05em;
+            padding-bottom: 12px;
+        }
+
+        .unit-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: -8px;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.6s ease 0.6s both;
+        }
+
+        .unit-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(218, 165, 32, 0.5));
+            max-width: 120px;
+        }
+
+        .unit-line.right {
+            background: linear-gradient(to left, transparent, rgba(218, 165, 32, 0.5));
+        }
+
+        .unit-text {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: #daa520;
+            letter-spacing: 0.1em;
+        }
+
+        .headline {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 22px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 0.08em;
+            margin-bottom: 8px;
+            animation: fadeInUp 0.6s ease 0.7s both;
+        }
+
+        .headline em {
+            font-style: normal;
+            color: #ffd700;
+        }
+
+        .sub-badges {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease 0.9s both;
+        }
+
+        .badge {
+            background: rgba(218, 165, 32, 0.15);
+            border: 1px solid rgba(218, 165, 32, 0.4);
+            border-radius: 100px;
+            padding: 6px 18px;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: rgba(255, 240, 180, 0.9);
+            letter-spacing: 0.05em;
+        }
+
+        .bottom-note {
+            margin-top: 24px;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 11px;
+            color: rgba(218, 165, 32, 0.5);
+            letter-spacing: 0.08em;
+            animation: fadeInUp 0.6s ease 1s both;
+        }
+
+        .exclaim-marks {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 80px;
+            font-weight: 900;
+            background: linear-gradient(180deg, #ffd700 0%, #daa520 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            animation: bounce 1.5s ease-in-out 1.2s infinite;
+            display: inline-block;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .corner-deco {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-color: rgba(218, 165, 32, 0.3);
+            border-style: solid;
+        }
+        .corner-deco.tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
+        .corner-deco.tr { top: 16px; right: 16px; border-width: 2px 2px 0 0; }
+        .corner-deco.bl { bottom: 16px; left: 16px; border-width: 0 0 2px 2px; }
+        .corner-deco.br { bottom: 16px; right: 16px; border-width: 0 2px 2px 0; }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #daa520;
+            opacity: 0;
+            animation: floatUp 4s ease-in infinite;
+        }
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 25%; animation-delay: 0.8s; }
+        .particle:nth-child(3) { left: 40%; animation-delay: 1.6s; }
+        .particle:nth-child(4) { left: 60%; animation-delay: 0.4s; }
+        .particle:nth-child(5) { left: 75%; animation-delay: 1.2s; }
+        .particle:nth-child(6) { left: 90%; animation-delay: 2s; }
+
+        @keyframes floatUp {
+            0% { bottom: 0; opacity: 0; transform: scale(0.5); }
+            20% { opacity: 0.8; }
+            80% { opacity: 0.4; }
+            100% { bottom: 100%; opacity: 0; transform: scale(1.5); }
+        }
+
         /* ============ スペーサー & セクション区切り ============ */
         .divider {
             height: 1px;
@@ -1051,9 +1313,59 @@
                 </div>
             </div>
 
-            <div class="impact-box" style="margin-top: 60px;">
-                <h3>年間<span style="font-size: 48px; color: white;">200時間</span>以上削減！</h3>
-                <p>※当社導入事例の平均値</p>
+            <div class="banner-wrap" style="margin-top: 60px;">
+              <div class="bg-rays">
+                <div class="ray"></div>
+                <div class="ray"></div>
+                <div class="ray"></div>
+                <div class="ray"></div>
+                <div class="ray"></div>
+                <div class="ray"></div>
+                <div class="ray"></div>
+                <div class="ray"></div>
+                <div class="ray"></div>
+              </div>
+              <div class="glow-circle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+
+              <div class="corner-deco tl"></div>
+              <div class="corner-deco tr"></div>
+              <div class="corner-deco bl"></div>
+              <div class="corner-deco br"></div>
+
+              <div class="content">
+                <div class="top-label">AI導入による実績データ</div>
+
+                <div class="main-number">
+                  <span class="num-prefix">年間</span>
+                  <span class="num-big">200</span>
+                  <span class="num-suffix">時間</span>
+                </div>
+
+                <div class="unit-row">
+                  <div class="unit-line"></div>
+                  <span class="unit-text">以上削減</span>
+                  <span class="exclaim-marks">！</span>
+                  <div class="unit-line right"></div>
+                </div>
+
+                <div class="headline">
+                  経営者の<em>貴重な時間</em>を、本来の仕事へ。
+                </div>
+
+                <div class="sub-badges">
+                  <span class="badge">週換算 約4時間の節約</span>
+                  <span class="badge">1日換算 約33分の削減</span>
+                  <span class="badge">導入企業の平均実績</span>
+                </div>
+
+                <div class="bottom-note">※当社導入事例の平均値</div>
+              </div>
             </div>
         </div>
     </section>
