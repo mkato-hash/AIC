@@ -219,6 +219,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
         .bg-rays {
@@ -278,7 +279,7 @@
             font-size: 13px;
             font-weight: 700;
             letter-spacing: 0.4em;
-            color: rgba(218, 165, 32, 0.8);
+            color: rgba(218, 165, 32, 0.9);
             text-transform: uppercase;
             margin-bottom: 16px;
             animation: fadeInDown 0.8s ease both;
@@ -313,7 +314,7 @@
             background-clip: text;
             line-height: 1;
             letter-spacing: -0.02em;
-            filter: drop-shadow(0 0 40px rgba(218, 165, 32, 0.6));
+            filter: drop-shadow(0 0 30px rgba(218, 165, 32, 0.4));
         }
 
         .num-suffix {
@@ -1136,6 +1137,93 @@
             .price {
                 font-size: 28px;
             }
+
+            /* バナーレスポンシブ */
+            .banner-wrap {
+                min-height: 380px;
+                border-radius: 12px;
+            }
+
+            .banner-wrap .content {
+                padding: 30px 20px;
+            }
+
+            .top-label {
+                font-size: 11px;
+                margin-bottom: 12px;
+            }
+
+            .main-number {
+                margin-bottom: 0;
+            }
+
+            .num-prefix {
+                font-size: 24px;
+                padding-bottom: 4px;
+            }
+
+            .num-big {
+                font-size: 80px;
+                filter: drop-shadow(0 0 20px rgba(218, 165, 32, 0.4));
+            }
+
+            .num-suffix {
+                font-size: 36px;
+                padding-bottom: 8px;
+            }
+
+            .unit-row {
+                gap: 10px;
+                margin-top: -6px;
+                margin-bottom: 16px;
+            }
+
+            .unit-text {
+                font-size: 22px;
+            }
+
+            .exclaim-marks {
+                font-size: 56px;
+            }
+
+            .unit-line {
+                max-width: 60px;
+            }
+
+            .headline {
+                font-size: 16px;
+                margin-bottom: 12px;
+                letter-spacing: 0.04em;
+            }
+
+            .sub-badges {
+                gap: 8px;
+                margin-top: 12px;
+            }
+
+            .badge {
+                padding: 5px 12px;
+                font-size: 10px;
+            }
+
+            .bottom-note {
+                margin-top: 16px;
+                font-size: 10px;
+            }
+
+            .glow-circle {
+                width: 300px;
+                height: 300px;
+            }
+
+            .corner-deco {
+                width: 40px;
+                height: 40px;
+            }
+            .corner-deco.tl { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
+            .corner-deco.tr { top: 12px; right: 12px; border-width: 1px 1px 0 0; }
+            .corner-deco.bl { bottom: 12px; left: 12px; border-width: 0 0 1px 1px; }
+            .corner-deco.br { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
         }
     </style>
 </head>
