@@ -3,1624 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIコンシェルジュ - 経営者のためのAI体験プログラム</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Hiragino Sans', 'ヒラギノサンス', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.7;
-            color: #333;
-            background: white;
-        }
-
-        /* ============ ヘッダー ============ */
-        header {
-            background: white;
-            border-bottom: 1px solid #f0f0f0;
-            padding: 5px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            letter-spacing: 1px;
-        }
-
-        .logo .gold {
-            color: #d4af37;
-        }
-
-        .contact-btn {
-            background: #d4af37;
-            color: #333;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-family: 'Hiragino Sans', sans-serif;
-        }
-
-        .phone-icon-btn {
-            display: none;
-        }
-
-        .contact-btn-icon {
-            display: none;
-        }
-
-        .contact-btn:hover {
-            background: #e8c547;
-            transform: translateY(-2px);
-        }
-
-        /* ============ コンテナ ============ */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* ============ トップセクション（表） ============ */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 750px;
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/top.jpeg') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 0 20px;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            width: 100%;
-            padding: 0 20px;
-        }
-
-        .hero-content h2 {
-            font-size: 46px;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 12px;
-            line-height: 1.1;
-            text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
-            letter-spacing: 1px;
-        }
-
-        .hero-content h2 .gold {
-            color: #d4af37;
-        }
-
-        .hero-content .tagline {
-            font-size: 26px;
-            color: #d4af37;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-            letter-spacing: 2px;
-        }
-
-        .hero-content p {
-            font-size: 14px;
-            color: white;
-            margin-bottom: 8px;
-            line-height: 1.5;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-        }
-
-        /* ============ メリットセクション ============ */
-        .benefits {
-            background: white;
-            padding: 80px 20px;
-        }
-
-        .benefits h2 {
-            font-size: 44px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 50px;
-            text-align: center;
-            letter-spacing: 1px;
-        }
-
-        .benefits h2 .gold {
-            color: #d4af37;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .benefit-card {
-            text-align: center;
-            padding: 30px 20px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            border-top: 4px solid #d4af37;
-        }
-
-        .benefit-card .icon {
-            font-size: 64px;
-            margin-bottom: 20px;
-        }
-
-        .benefit-card h3 {
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .benefit-card p {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .impact-box {
-            background: linear-gradient(135deg, #d4af37 0%, #e8c547 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .impact-box h3 {
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .impact-box p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        /* ============ バナー ============ */
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@900&family=Noto+Sans+JP:wght@400;700;900&display=swap');
-
-        .banner-wrap {
-            width: 100%;
-            background: linear-gradient(135deg, #1a1008 0%, #2d1e00 40%, #1a1008 100%);
-            border-radius: 16px;
-            padding: 0;
-            overflow: hidden;
-            position: relative;
-            min-height: 320px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .bg-rays {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-        }
-
-        .ray {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200%;
-            height: 3px;
-            background: linear-gradient(to right, transparent 0%, rgba(218, 165, 32, 0.15) 40%, rgba(218, 165, 32, 0.35) 60%, transparent 100%);
-            transform-origin: 0% 50%;
-            animation: rayRotate 8s linear infinite;
-        }
-
-        .ray:nth-child(1) { transform: rotate(0deg); }
-        .ray:nth-child(2) { transform: rotate(20deg); }
-        .ray:nth-child(3) { transform: rotate(40deg); }
-        .ray:nth-child(4) { transform: rotate(60deg); }
-        .ray:nth-child(5) { transform: rotate(80deg); }
-        .ray:nth-child(6) { transform: rotate(100deg); }
-        .ray:nth-child(7) { transform: rotate(120deg); }
-        .ray:nth-child(8) { transform: rotate(140deg); }
-        .ray:nth-child(9) { transform: rotate(160deg); }
-
-        .glow-circle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(218, 165, 32, 0.2) 0%, rgba(218, 165, 32, 0.05) 50%, transparent 70%);
-            border-radius: 50%;
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
-        }
-
-        .banner-wrap .content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            padding: 48px 40px;
-            width: 100%;
-        }
-
-        .top-label {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.4em;
-            color: rgba(218, 165, 32, 0.9);
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            animation: fadeInDown 0.8s ease both;
-        }
-
-        .main-number {
-            display: flex;
-            align-items: baseline;
-            justify-content: center;
-            gap: 0;
-            line-height: 1;
-            margin-bottom: 0;
-            animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
-        }
-
-        .num-prefix {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 36px;
-            font-weight: 900;
-            color: #f5e090;
-            letter-spacing: 0.05em;
-            padding-bottom: 8px;
-        }
-
-        .num-big {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 140px;
-            font-weight: 900;
-            background: linear-gradient(180deg, #fff9d6 0%, #daa520 50%, #b8860b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-            letter-spacing: -0.02em;
-            filter: drop-shadow(0 0 30px rgba(218, 165, 32, 0.4));
-        }
-
-        .num-suffix {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 52px;
-            font-weight: 900;
-            color: #f5e090;
-            letter-spacing: 0.05em;
-            padding-bottom: 12px;
-        }
-
-        .unit-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            margin-top: -8px;
-            margin-bottom: 24px;
-            animation: fadeInUp 0.6s ease 0.6s both;
-        }
-
-        .unit-line {
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(218, 165, 32, 0.5));
-            max-width: 120px;
-        }
-
-        .unit-line.right {
-            background: linear-gradient(to left, transparent, rgba(218, 165, 32, 0.5));
-        }
-
-        .unit-text {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 32px;
-            font-weight: 900;
-            color: #daa520;
-            letter-spacing: 0.1em;
-        }
-
-        .headline {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 22px;
-            font-weight: 900;
-            color: #fff;
-            letter-spacing: 0.08em;
-            margin-bottom: 8px;
-            animation: fadeInUp 0.6s ease 0.7s both;
-        }
-
-        .headline em {
-            font-style: normal;
-            color: #ffd700;
-        }
-
-        .sub-badges {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.6s ease 0.9s both;
-        }
-
-        .badge {
-            background: rgba(218, 165, 32, 0.15);
-            border: 1px solid rgba(218, 165, 32, 0.4);
-            border-radius: 100px;
-            padding: 6px 18px;
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 12px;
-            font-weight: 700;
-            color: rgba(255, 240, 180, 0.9);
-            letter-spacing: 0.05em;
-        }
-
-        .bottom-note {
-            margin-top: 24px;
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 11px;
-            color: rgba(218, 165, 32, 0.5);
-            letter-spacing: 0.08em;
-            animation: fadeInUp 0.6s ease 1s both;
-        }
-
-        .exclaim-marks {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 80px;
-            font-weight: 900;
-            background: linear-gradient(180deg, #ffd700 0%, #daa520 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-            animation: bounce 1.5s ease-in-out 1.2s infinite;
-            display: inline-block;
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.5); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .corner-deco {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            border-color: rgba(218, 165, 32, 0.3);
-            border-style: solid;
-        }
-        .corner-deco.tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
-        .corner-deco.tr { top: 16px; right: 16px; border-width: 2px 2px 0 0; }
-        .corner-deco.bl { bottom: 16px; left: 16px; border-width: 0 0 2px 2px; }
-        .corner-deco.br { bottom: 16px; right: 16px; border-width: 0 2px 2px 0; }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: #daa520;
-            opacity: 0;
-            animation: floatUp 4s ease-in infinite;
-        }
-        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .particle:nth-child(2) { left: 25%; animation-delay: 0.8s; }
-        .particle:nth-child(3) { left: 40%; animation-delay: 1.6s; }
-        .particle:nth-child(4) { left: 60%; animation-delay: 0.4s; }
-        .particle:nth-child(5) { left: 75%; animation-delay: 1.2s; }
-        .particle:nth-child(6) { left: 90%; animation-delay: 2s; }
-
-        @keyframes floatUp {
-            0% { bottom: 0; opacity: 0; transform: scale(0.5); }
-            20% { opacity: 0.8; }
-            80% { opacity: 0.4; }
-            100% { bottom: 100%; opacity: 0; transform: scale(1.5); }
-        }
-
-        /* ============ スペーサー & セクション区切り ============ */
-        .divider {
-            height: 1px;
-            background: #e0e0e0;
-            margin: 80px 0;
-        }
-
-        /* ============ AIをわかりやすく ============ */
-        .ai-intro {
-            padding: 80px 20px;
-            background: #fafafa;
-        }
-
-        .ai-intro h2 {
-            font-size: 48px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 50px;
-            text-align: center;
-            letter-spacing: 1px;
-        }
-
-        .ai-intro h2 .gold {
-            color: #d4af37;
-        }
-
-        .problem-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .problem-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .problem-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .problem-card .icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .problem-card h3 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .problem-card p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        /* ============ AI活用事例 ============ */
-        .use-cases {
-            padding: 80px 20px;
-            background: white;
-        }
-
-        .use-cases h2 {
-            font-size: 48px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 50px;
-            text-align: center;
-            letter-spacing: 1px;
-        }
-
-        .use-cases h2 .gold {
-            color: #d4af37;
-        }
-
-        .cases-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .case-item {
-            background: #f9f9f9;
-            padding: 40px 30px;
-            border-radius: 8px;
-            border-top: 4px solid #d4af37;
-        }
-
-        .case-item h3 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .case-item p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-
-        .reduction-rate {
-            background: #333;
-            color: #d4af37;
-            padding: 12px 16px;
-            border-radius: 4px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 16px;
-            min-height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .improvement-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px 0;
-            position: relative;
-            height: 60px;
-        }
-
-        .improvement-arrow::before {
-            content: '↓';
-            font-size: 48px;
-            color: #d4af37;
-            font-weight: bold;
-        }
-
-        .improvement-arrow .text {
-            position: absolute;
-            font-size: 13px;
-            font-weight: bold;
-            color: #333;
-            background: white;
-            padding: 2px 8px;
-            border-radius: 3px;
-            letter-spacing: 1px;
-        }
-
-        /* ============ フロー図 ============ */
-        .process {
-            padding: 80px 20px;
-            background: #fafafa;
-        }
-
-        .process h2 {
-            font-size: 48px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 50px;
-            text-align: center;
-            letter-spacing: 1px;
-        }
-
-        .process h2 .gold {
-            color: #d4af37;
-        }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .step {
-            background: white;
-            padding: 40px 20px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .step .number {
-            font-size: 36px;
-            color: #d4af37;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .step h3 {
-            font-size: 20px;
-            color: #333;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        .step p {
-            font-size: 13px;
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .step::after {
-            content: '→';
-            position: absolute;
-            right: -30px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 24px;
-            color: #d4af37;
-        }
-
-        .step:last-child::after {
-            display: none;
-        }
-
-        /* ============ 料金プラン ============ */
-        .pricing {
-            padding: 80px 20px;
-            background: white;
-        }
-
-        .pricing h2 {
-            font-size: 48px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 60px;
-            text-align: center;
-            letter-spacing: 1px;
-        }
-
-        .pricing h2 .gold {
-            color: #d4af37;
-        }
-
-        .pricing-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .plan-card {
-            background: #f9f9f9;
-            border-left: 4px solid #d4af37;
-            padding: 40px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .plan-card:hover {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .plan-card h3 {
-            font-size: 32px;
-            color: #333;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        .plan-card .subtitle {
-            color: #999;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-
-        .plan-card p {
-            color: #666;
-            font-size: 15px;
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
-
-        .price {
-            font-size: 36px;
-            color: #d4af37;
-            font-weight: bold;
-            margin: 30px 0;
-        }
-
-        .price-currency {
-            font-size: 20px;
-        }
-
-        .price-note {
-            font-size: 14px;
-            color: #999;
-            margin-bottom: 20px;
-        }
-
-        .pricing-image {
-            text-align: center;
-        }
-
-        .pricing-image img {
-            max-width: 500px;
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        /* ============ FAQ ============ */
-        .faq {
-            padding: 80px 20px;
-            background: #fafafa;
-        }
-
-        .faq h2 {
-            font-size: 48px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 50px;
-            text-align: center;
-            letter-spacing: 1px;
-        }
-
-        .faq h2 .gold {
-            color: #d4af37;
-        }
-
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: white;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .faq-question {
-            background: #f0f0f0;
-            padding: 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: #e8e8e8;
-        }
-
-        .faq-question h3 {
-            font-size: 18px;
-            color: #333;
-            font-weight: bold;
-            margin: 0;
-        }
-
-        .faq-toggle {
-            font-size: 20px;
-            color: #d4af37;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-toggle {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            padding: 20px;
-            color: #666;
-            font-size: 14px;
-            line-height: 1.8;
-            display: none;
-        }
-
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-
-        /* ============ フッター ============ */
-        .footer-content {
-            padding: 80px 20px;
-            background: white;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .footer-main {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            margin-bottom: 60px;
-        }
-
-        .footer-text h2 {
-            font-size: 40px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-
-        .footer-text p {
-            color: #666;
-            font-size: 15px;
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
-
-        .footer-image {
-            text-align: center;
-        }
-
-        .footer-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .footer-info {
-            background: #333;
-            color: white;
-            padding: 50px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-        }
-
-        .company-info {
-            margin-bottom: 30px;
-        }
-
-        .company-info h3 {
-            font-size: 20px;
-            color: #d4af37;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .company-info p {
-            font-size: 14px;
-            line-height: 1.8;
-            margin-bottom: 8px;
-        }
-
-        .contact-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .contact-links a {
-            color: #d4af37;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .contact-links a:hover {
-            text-decoration: underline;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            color: #999;
-            font-size: 12px;
-        }
-
-        /* ============ レスポンシブ ============ */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-                align-items: flex-start;
-            }
-
-            .header-container > div:last-child {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-                align-items: flex-start;
-            }
-
-            .contact-btn {
-                width: 100%;
-                text-align: center;
-            }
-
-            .hero-content h2 {
-                font-size: 32px;
-            }
-
-            .hero-content .tagline {
-                font-size: 22px;
-            }
-
-            .hero {
-                height: 600px;
-            }
-
-            .hero > div:last-child {
-                position: static;
-                margin-top: 30px;
-                text-align: center;
-            }
-
-            .hero > div:last-child img {
-                height: 150px !important;
-            }
-
-            .benefits-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .process-steps {
-                grid-template-columns: 1fr;
-            }
-
-            .step::after {
-                content: '↓';
-                right: 50%;
-                transform: translateX(50%);
-                bottom: -30px;
-                top: auto;
-            }
-
-            .step:last-child::after {
-                display: none;
-            }
-
-            .footer-main,
-            .pricing-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .problem-cards,
-            .cases-grid {
-                grid-template-columns: 1fr;
-            }
-
-            h2 {
-                font-size: 28px !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header {
-                padding: 8px 0;
-            }
-
-            .header-container {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                gap: 15px;
-                padding: 0 15px;
-                flex-wrap: nowrap;
-            }
-
-            .logo {
-                flex-shrink: 0;
-            }
-
-            .logo img {
-                height: 35px !important;
-                width: auto;
-            }
-
-            .header-container > div:last-child {
-                display: none !important;
-            }
-
-            .phone-info {
-                display: none !important;
-            }
-
-            .phone-icon-btn {
-                display: inline-flex !important;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.3s ease;
-                cursor: pointer;
-                color: #333;
-                padding: 0 !important;
-                border: none !important;
-                background: none !important;
-                flex-shrink: 0;
-                margin-left: auto !important;
-                margin-right: 15px !important;
-            }
-
-            .phone-icon-btn svg {
-                width: 22px;
-                height: 22px;
-            }
-
-            .phone-icon-btn:hover {
-                color: #d4af37;
-            }
-
-            .contact-btn-text {
-                display: none !important;
-            }
-
-            .contact-btn-icon {
-                display: inline-flex !important;
-                align-items: center;
-                justify-content: center;
-                padding: 0 !important;
-                border: none !important;
-                background: none !important;
-                cursor: pointer;
-                color: #333;
-                transition: all 0.3s ease;
-                flex-shrink: 0;
-                margin: 0 !important;
-            }
-
-            .contact-btn-icon svg {
-                width: 22px;
-                height: 22px;
-            }
-
-            .contact-btn-icon:hover {
-                color: #d4af37;
-            }
-
-            .contact-btn {
-                padding: 10px 15px;
-                font-size: 14px;
-                width: auto;
-            }
-
-            .hero-content h2 {
-                font-size: 24px;
-            }
-
-            .hero-content .tagline {
-                font-size: 18px;
-            }
-
-            .hero {
-                height: 500px;
-            }
-
-            .hero > div:last-child {
-                position: static !important;
-                margin-top: 20px;
-            }
-
-            .hero > div:last-child img {
-                height: 100px !important;
-            }
-
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .price {
-                font-size: 28px;
-            }
-
-            /* バナーレスポンシブ */
-            .banner-wrap {
-                min-height: 380px;
-                border-radius: 12px;
-            }
-
-            .banner-wrap .content {
-                padding: 30px 20px;
-            }
-
-            .top-label {
-                font-size: 11px;
-                margin-bottom: 12px;
-            }
-
-            .main-number {
-                margin-bottom: 0;
-            }
-
-            .num-prefix {
-                font-size: 24px;
-                padding-bottom: 4px;
-            }
-
-            .num-big {
-                font-size: 80px;
-                filter: drop-shadow(0 0 20px rgba(218, 165, 32, 0.4));
-            }
-
-            .num-suffix {
-                font-size: 36px;
-                padding-bottom: 8px;
-            }
-
-            .unit-row {
-                gap: 10px;
-                margin-top: -6px;
-                margin-bottom: 16px;
-            }
-
-            .unit-text {
-                font-size: 22px;
-            }
-
-            .exclaim-marks {
-                font-size: 56px;
-            }
-
-            .unit-line {
-                max-width: 60px;
-            }
-
-            .headline {
-                font-size: 16px;
-                margin-bottom: 12px;
-                letter-spacing: 0.04em;
-            }
-
-            .sub-badges {
-                gap: 8px;
-                margin-top: 12px;
-            }
-
-            .badge {
-                padding: 5px 12px;
-                font-size: 10px;
-            }
-
-            .bottom-note {
-                margin-top: 16px;
-                font-size: 10px;
-            }
-
-            .glow-circle {
-                width: 300px;
-                height: 300px;
-            }
-
-            .corner-deco {
-                width: 40px;
-                height: 40px;
-            }
-            .corner-deco.tl { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
-            .corner-deco.tr { top: 12px; right: 12px; border-width: 1px 1px 0 0; }
-            .corner-deco.bl { bottom: 12px; left: 12px; border-width: 0 0 1px 1px; }
-            .corner-deco.br { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
-        }
-    </style>
+    <meta name="description" content="AIコンシェルジュは、経営者の実務をその場でヒアリングしながらAI活用を体験できる3時間のプログラムです。">
+    <title>AIコンシェルジュ | 経営者のためのAI体験プログラム</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- ============ ヘッダー ============ -->
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <img src="images/logo.png" alt="AIコンシェルジュロゴ" style="height: 85px; width: auto;">
-            </div>
-            <a href="tel:0368244533" class="phone-icon-btn" style="text-decoration: none; cursor: pointer;" title="電話をかける">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="#top" aria-label="AIコンシェルジュ トップへ">
+                <img src="images/logo.png" alt="AIコンシェルジュ">
             </a>
-            <button class="contact-btn contact-btn-icon" style="background: none; border: none; padding: 0; cursor: pointer; color: #333;" onclick="document.querySelector('.footer-info').scrollIntoView({behavior: 'smooth'})" title="お問い合わせ">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                    <path d="m22 7-10 5L2 7"></path>
-                </svg>
-            </button>
-            <div style="display: flex; gap: 30px; align-items: center;">
-                <div class="phone-info" style="text-align: right; font-size: 13px; line-height: 1.6;">
-                    <div style="color: #666;">お電話でのご連絡</div>
-                    <a href="tel:0368244533" style="font-size: 16px; font-weight: bold; color: #333; text-decoration: none; transition: all 0.3s ease; display: block;" onmouseover="[this.style](http://this.style).color='#d4af37'" onmouseout="[this.style](http://this.style).color='#333'">
-                        03-6824-4533
-                    </a>
-                    <div style="color: #666; font-size: 12px;">平日9：00−18：00</div>
-                </div>
-                <button class="contact-btn contact-btn-text" onclick="document.querySelector('.footer-info').scrollIntoView({behavior: 'smooth'})">
-                    お問い合わせ
-                </button>
+
+            <nav class="site-nav" aria-label="主要ナビゲーション">
+                <a href="#about">特徴</a>
+                <a href="#cases">活用例</a>
+                <a href="#flow">流れ</a>
+                <a href="#price">料金</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+
+            <div class="header-actions">
+                <a class="header-phone" href="tel:0368244533">
+                    <span>03-6824-4533</span>
+                    <small>平日 9:00-18:00</small>
+                </a>
+                <button class="button button-primary button-consult" type="button" data-scroll-target="#contact">まずはご相談ください</button>
             </div>
         </div>
     </header>
 
-    <!-- ============ トップセクション ============ -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>経営者の皆さん、<br><span class="gold">AIを体験</span>してみませんか？</h2>
-            <p class="tagline">AIコンシェルジュ</p>
-            <p>
-                AIは便利だと知っているけど、実際にどう使ったら良いのか、本当に役に立つのか、そんなお悩みを解決します。<br><br>
-                まずはAIを実際に体験していただく。その場でAIが日々のお仕事をどう効率化できるか、一緒に探っていきます。
-            </p>
-        </div>
-        <div style="position: absolute; bottom: 40px; right: 40px; z-index: 3;">
-            <img src="images/logo3.png" alt="AIコンシェルジュロゴ3" style="height: 250px; width: auto;">
-        </div>
-    </section>
+    <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+            <img class="hero-image" src="images/top.jpeg" alt="明るい会議室でAI活用について相談する経営者">
+            <div class="hero-shade" aria-hidden="true"></div>
 
-    <!-- ============ メリットセクション ============ -->
-    <section class="benefits">
-        <div class="container">
-            <h2>AIコンシェルジュの<span class="gold">4つのメリット</span></h2>
+            <div class="hero-inner">
+                <p class="eyebrow">Executive AI Program</p>
+                <h1 id="hero-title"><span>AI</span><span>コンシェルジュ</span></h1>
+                <p class="hero-lead">経営者の皆さん、AIを体験してみませんか？</p>
+                <p class="hero-copy">
+                    AIは便利だと知っているけれど、実際にどう使えばよいのか、本当に役に立つのか。
+                    その疑問を、日々の仕事に合わせた体験で解消します。
+                </p>
 
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="icon">⏰</div>
-                    <h3>時間が生まれる</h3>
-                    <p>業務時間を削減的に短縮し、戦略的な業務に時間を使える</p>
+                <div class="hero-actions">
+                    <button class="button button-primary" type="button" data-scroll-target="#price">料金を見る</button>
+                    <button class="button button-outline" type="button" data-scroll-target="#flow">進め方を見る</button>
                 </div>
-                <div class="benefit-card">
-                    <div class="icon">✓</div>
-                    <h3>ミスが減る</h3>
-                    <p>AIによる正確な処理でヒューマンエラーを最小化</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="icon">⚡</div>
-                    <h3>仕事が早くなる</h3>
-                    <p>自動化により業務スピードが飛躍的に向上</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="icon">💰</div>
-                    <h3>コストを削減</h3>
-                    <p>運用コスト削減で経営効率が大幅改善</p>
-                </div>
-            </div>
 
-            <div style="text-align: center; margin: 60px 0 0 0;">
-                <img src="images/image001.png" alt="AIメリット画像" style="width: 100%; max-width: 600px; height: auto;">
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ============ AIをわかりやすく ============ -->
-    <section class="ai-intro">
-        <div class="container">
-            <h2><span class="gold">わかりにくい「AI」</span>をわかりやすく</h2>
-
-            <div class="problem-cards">
-                <div class="problem-card">
-                    <div class="icon">❓</div>
-                    <h3>AIって何？</h3>
-                    <p>難しい概念ではなく、実は日々の業務で活用できる身近な存在です</p>
-                </div>
-                <div class="problem-card">
-                    <div class="icon">🤔</div>
-                    <h3>本当に役に立つ？</h3>
-                    <p>実際の業務を通じて、AIの実用性を確認できます</p>
-                </div>
-                <div class="problem-card">
-                    <div class="icon">🛠️</div>
-                    <h3>どう使ったら？</h3>
-                    <p>専門知識なくても、その場でAIの活用方法を習得できます</p>
-                </div>
-                <div class="problem-card">
-                    <div class="icon">💼</div>
-                    <h3>業種は関係？</h3>
-                    <p>どの業種でも、経営業務の効率化に活用できます</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ AI活用事例 ============ -->
-    <section class="use-cases">
-        <div class="container">
-            <h2>こんなお仕事も<span class="gold">AIで効率化</span>できます</h2>
-
-            <div class="cases-grid">
-                <div class="case-item">
-                    <h3>メールの仕訳・返信</h3>
-                    <p style="margin-bottom: 20px; color: #999; font-size: 13px;">
-                        <strong style="color: #333;">現在：</strong>毎日大量のメールを仕分けて、返信内容を考えて送らなくてはいけない
-                    </p>
-                    <div class="improvement-arrow">
-                        <span class="text">AI改善</span>
+                <dl class="hero-metrics" aria-label="プログラム概要">
+                    <div>
+                        <dt>時間</dt>
+                        <dd>3時間</dd>
                     </div>
-                    <p style="margin-bottom: 20px; font-size: 14px;">
-                        重要なメールの仕訳、返信内容の作成など、定型的なメール対応をAIが自動化します
+                    <div>
+                        <dt>対象</dt>
+                        <dd>経営者</dd>
+                    </div>
+                    <div>
+                        <dt>形式</dt>
+                        <dd>実務体験</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <section class="section intro-section" id="about">
+            <div class="container split-layout">
+                <div class="section-copy">
+                    <p class="section-label">What we do</p>
+                    <h2>AIを「知っている」から、業務で「使える」へ。</h2>
+                    <p>
+                        AIコンシェルジュは、抽象的な説明ではなく、経営者ご自身の仕事を題材に進める体験型プログラムです。
+                        メール、資料作成、集計、調査、スケジュール調整など、毎日の業務の中からAI化しやすい場面を一緒に見つけます。
                     </p>
-                    <div class="reduction-rate">削減率 約80%</div>
                 </div>
-                <div class="case-item">
+
+                <figure class="image-panel">
+                    <img src="images/image001.png" alt="AI活用をチームで進めるイラスト">
+                </figure>
+            </div>
+
+            <div class="container value-grid" aria-label="AIコンシェルジュのメリット">
+                <article class="value-item">
+                    <span>01</span>
+                    <h3>時間を生み出す</h3>
+                    <p>繰り返し業務や調査の下準備をAIで短縮し、意思決定に使える時間を増やします。</p>
+                </article>
+                <article class="value-item">
+                    <span>02</span>
+                    <h3>判断が早くなる</h3>
+                    <p>情報整理、要約、比較表の作成をすばやく行い、経営判断の初速を上げます。</p>
+                </article>
+                <article class="value-item">
+                    <span>03</span>
+                    <h3>ミスを減らす</h3>
+                    <p>定型作業をAIに任せる設計を体験し、確認すべきポイントも整理します。</p>
+                </article>
+                <article class="value-item">
+                    <span>04</span>
+                    <h3>社内展開しやすい</h3>
+                    <p>専門用語を避け、現場に伝えやすい活用方法として持ち帰れる形にします。</p>
+                </article>
+            </div>
+        </section>
+
+        <div class="section-cta">
+            <div class="container section-cta-inner">
+                <p>AI活用の進め方を相談したい方へ</p>
+                <button class="button button-primary button-consult" type="button" data-scroll-target="#contact">ご相談はこちら</button>
+            </div>
+        </div>
+
+        <section class="section light-section problem-section">
+            <div class="container split-layout reverse">
+                <figure class="wide-visual">
+                    <img src="images/pic02.jpeg" alt="AI活用による改善を示すイラスト">
+                </figure>
+
+                <div class="section-copy">
+                    <p class="section-label">For your first step</p>
+                    <h2>わかりにくいAIを、経営者の実務に置き換えて考えます。</h2>
+                    <p>
+                        どのツールを入れるかより先に、どの仕事にAIが効くのかを見極めることが重要です。
+                        目の前の業務を題材にすることで、導入後のイメージが具体になります。
+                    </p>
+                    <div class="quote-line">「AIで何ができるのか」ではなく、「自社のどの仕事が変わるのか」から始めます。</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cases-section" id="cases">
+            <div class="container section-heading">
+                <p class="section-label">Use cases</p>
+                <h2>こんなお仕事もAIで効率化できます。</h2>
+            </div>
+
+            <div class="container cases-grid">
+                <article class="case-card">
+                    <p class="case-kicker">Mail</p>
+                    <h3>メールの仕分け・返信</h3>
+                    <p class="before">大量のメールを確認し、優先度を判断して返信文を作る手間。</p>
+                    <p>重要メールの抽出、返信案の作成、社内共有用の要約までを効率化します。</p>
+                    <strong>削減率 約80%</strong>
+                </article>
+                <article class="case-card">
+                    <p class="case-kicker">Schedule</p>
                     <h3>スケジュール調整</h3>
-                    <p style="margin-bottom: 20px; color: #999; font-size: 13px;">
-                        <strong style="color: #333;">現在：</strong>スケジューラで空いている日程を確認し先方に打診、決定したスケジュールを登録する手間が大変
-                    </p>
-                    <div class="improvement-arrow">
-                        <span class="text">AI改善</span>
-                    </div>
-                    <p style="margin-bottom: 20px; font-size: 14px;">
-                        会議の日程調整、参加者との連絡をAIが一括対応。ダブルブッキングも防げます
-                    </p>
-                    <div class="reduction-rate">削減率 約70%</div>
-                </div>
-                <div class="case-item">
-                    <h3>エクセル計算・分析</h3>
-                    <p style="margin-bottom: 20px; color: #999; font-size: 13px;">
-                        <strong style="color: #333;">現在：</strong>各部門の売上、実績などを分析したりエクセルの操作が面倒、統計情報などを探すのも大変
-                    </p>
-                    <div class="improvement-arrow">
-                        <span class="text">AI改善</span>
-                    </div>
-                    <p style="margin-bottom: 20px; font-size: 14px;">
-                        エクセルの複雑な計算や集計もおまかせ、グラフ作成もAIが瞬時に処理。経営判断が迅速に
-                    </p>
-                    <div class="reduction-rate">削減率 約75%</div>
-                </div>
-                <div class="case-item">
-                    <h3>領収書の精算</h3>
-                    <p style="margin-bottom: 20px; color: #999; font-size: 13px;">
-                        <strong style="color: #333;">現在：</strong>領収書の内容を経費精算ツールに入力するのが手間、請求書もリストにするにはツールが必要だと思ってる
-                    </p>
-                    <div class="improvement-arrow">
-                        <span class="text">AI改善</span>
-                    </div>
-                    <p style="margin-bottom: 20px; font-size: 14px;">
-                        毎月の領収書のデータ読み込みから仕訳も可能、請求書の整理の手間を大幅削減
-                    </p>
-                    <div class="reduction-rate">削減率 約80%</div>
-                </div>
+                    <p class="before">候補日の確認、先方への打診、決定後の登録が何度も発生する。</p>
+                    <p>候補日の整理、依頼文作成、決定事項の共有まで一連の流れを短くします。</p>
+                    <strong>削減率 約70%</strong>
+                </article>
+                <article class="case-card">
+                    <p class="case-kicker">Analysis</p>
+                    <h3>集計・分析</h3>
+                    <p class="before">売上や実績をまとめ、見たい切り口に合わせて表やグラフを作る。</p>
+                    <p>表の整形、傾向の読み取り、報告文のたたき台作成をAIで支援します。</p>
+                    <strong>削減率 約75%</strong>
+                </article>
+                <article class="case-card">
+                    <p class="case-kicker">Accounting</p>
+                    <h3>領収書・請求書整理</h3>
+                    <p class="before">紙やPDFの情報を転記し、後から検索できるように整理する。</p>
+                    <p>読み取り、分類、リスト化の流れを設計し、月次処理の負担を減らします。</p>
+                    <strong>削減率 約80%</strong>
+                </article>
             </div>
 
-            <div class="banner-wrap" style="margin-top: 60px;">
-              <div class="bg-rays">
-                <div class="ray"></div>
-                <div class="ray"></div>
-                <div class="ray"></div>
-                <div class="ray"></div>
-                <div class="ray"></div>
-                <div class="ray"></div>
-                <div class="ray"></div>
-                <div class="ray"></div>
-                <div class="ray"></div>
-              </div>
-              <div class="glow-circle"></div>
-              <div class="particle"></div>
-              <div class="particle"></div>
-              <div class="particle"></div>
-              <div class="particle"></div>
-              <div class="particle"></div>
-              <div class="particle"></div>
-
-              <div class="corner-deco tl"></div>
-              <div class="corner-deco tr"></div>
-              <div class="corner-deco bl"></div>
-              <div class="corner-deco br"></div>
-
-              <div class="content">
-                <div class="top-label">AI導入による実績データ</div>
-
-                <div class="main-number">
-                  <span class="num-prefix">年間</span>
-                  <span class="num-big">200</span>
-                  <span class="num-suffix">時間</span>
-                </div>
-
-                <div class="unit-row">
-                  <div class="unit-line"></div>
-                  <span class="unit-text">以上削減</span>
-                  <span class="exclaim-marks">！</span>
-                  <div class="unit-line right"></div>
-                </div>
-
-                <div class="headline">
-                  経営者の<em>貴重な時間</em>を、本来の仕事へ。
-                </div>
-
-                <div class="sub-badges">
-                  <span class="badge">週換算 約4時間の節約</span>
-                  <span class="badge">1日換算 約33分の削減</span>
-                  <span class="badge">導入企業の平均実績</span>
-                </div>
-
-                <div class="bottom-note">※当社導入事例の平均値</div>
-              </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ============ フロー図 ============ -->
-    <section class="process">
-        <div class="container">
-            <h2><span class="gold">ヒアリングから改善まで</span>の流れ</h2>
-
-            <div class="process-steps">
-                <div class="step">
-                    <div class="number">1</div>
-                    <h3>ヒアリング</h3>
-                    <p>日々のお仕事の課題をお聞きします</p>
-                </div>
-                <div class="step">
-                    <div class="number">2</div>
-                    <h3>課題抽出</h3>
-                    <p>どこをAIで効率化できるかを分析</p>
-                </div>
-                <div class="step">
-                    <div class="number">3</div>
-                    <h3>その場で実践</h3>
-                    <p>実際にAIを使ってみます</p>
-                </div>
-                <div class="step">
-                    <div class="number">4</div>
-                    <h3>定着支援</h3>
-                    <p>継続的なサポートで実務に定着させます</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ============ 料金プラン ============ -->
-    <section class="pricing">
-        <div class="container">
-            <h2><span class="gold">料金プラン</span></h2>
-
-            <div class="pricing-content">
+            <div class="container impact-band">
                 <div>
-                    <div class="plan-card">
-                        <h3>AIコンシェルジュ</h3>
-                        <p class="subtitle">AI体験プログラム</p>
-                        <p>
-                            日々のお仕事をヒアリングしながら、その場でAIで効率化。<br>
-                            まずはAIを体験いただくプラン
-                        </p>
-                        <div class="price">¥<span class="price-currency">100,000</span></div>
-                        <p class="price-note">（税別）</p>
-                        <p style="color: #666; font-size: 14px;">
-                            ご質問・ご不明な点がございましたら、お気軽にお問い合わせください。
-                        </p>
-                    </div>
+                    <p>導入による平均実績</p>
+                    <strong>年間200時間以上削減</strong>
                 </div>
-                <div class="pricing-image">
-                    <img src="images/pic01.png" alt="AIコンシェルジュの詳細">
-                </div>
+                <span>経営者の貴重な時間を、本来の仕事へ。</span>
+            </div>
+        </section>
+
+        <div class="section-cta">
+            <div class="container section-cta-inner">
+                <p>導入イメージが湧いたら、次は具体的な進め方をご案内します</p>
+                <button class="button button-primary button-consult" type="button" data-scroll-target="#contact">ご相談はこちら</button>
             </div>
         </div>
-    </section>
 
-    <div class="divider"></div>
+        <section class="section light-section flow-section" id="flow">
+            <div class="container split-layout">
+                <div class="section-copy">
+                    <p class="section-label">Process</p>
+                    <h2>ヒアリングから改善まで、3時間で体験します。</h2>
+                    <p>
+                        最初に課題をうかがい、AIで効きやすい業務を抽出。
+                        その場で使い方を試しながら、社内で続けるための形まで整理します。
+                    </p>
+                </div>
 
-    <!-- ============ FAQ ============ -->
-    <section class="faq">
-        <div class="container">
-            <h2>よくあるご<span class="gold">質問</span></h2>
+                <figure class="photo-panel">
+                    <img src="images/mid.jpeg" alt="ノートパソコンで業務改善に取り組む担当者">
+                </figure>
+            </div>
 
-            <div class="faq-container">
-                <div class="faq-item active">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h3>Q. AIやITに詳しくなくても大丈夫ですか?</h3>
-                        <span class="faq-toggle">▼</span>
+            <div class="container process-list" aria-label="サービスの流れ">
+                <article>
+                    <span>1</span>
+                    <h3>ヒアリング</h3>
+                    <p>日々の仕事、困っている作業、時間がかかる場面を整理します。</p>
+                </article>
+                <article>
+                    <span>2</span>
+                    <h3>課題抽出</h3>
+                    <p>AIで効率化しやすい業務と、まず試すべき範囲を見極めます。</p>
+                </article>
+                <article>
+                    <span>3</span>
+                    <h3>その場で実践</h3>
+                    <p>実際の業務に近い内容でAIを使い、成果物を見ながら調整します。</p>
+                </article>
+                <article>
+                    <span>4</span>
+                    <h3>定着支援</h3>
+                    <p>継続利用のコツや、社内に共有しやすい進め方を整理します。</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section pricing-section" id="price">
+            <div class="container pricing-layout">
+                <div class="plan-panel">
+                    <p class="section-label">Price</p>
+                    <h2>料金プラン</h2>
+                    <h3>AIコンシェルジュ</h3>
+                    <p class="plan-subtitle">AI体験プログラム / 1回 3時間</p>
+                    <p>
+                        日々のお仕事をヒアリングしながら、その場でAIによる効率化を体験いただくプランです。
+                    </p>
+                    <div class="price">
+                        <span>¥</span>100,000
+                        <small>税別</small>
                     </div>
+                    <button class="button button-primary button-consult" type="button" data-scroll-target="#contact">まずはご相談ください</button>
+                </div>
+
+                <figure class="illustration-panel">
+                    <img src="images/pic01.png" alt="AIによる業務改善のイラスト">
+                </figure>
+            </div>
+        </section>
+
+        <div class="section-cta">
+            <div class="container section-cta-inner">
+                <p>実務に合わせた体験内容を、その場で一緒に設計できます</p>
+                <button class="button button-primary button-consult" type="button" data-scroll-target="#contact">ご相談はこちら</button>
+            </div>
+        </div>
+
+        <section class="section light-section faq-section" id="faq">
+            <div class="container section-heading">
+                <p class="section-label">FAQ</p>
+                <h2>よくあるご質問</h2>
+            </div>
+
+            <div class="container faq-list">
+                <article class="faq-item is-open">
+                    <button class="faq-question" type="button" aria-expanded="true">
+                        AIやITに詳しくなくても大丈夫ですか？
+                        <span aria-hidden="true"></span>
+                    </button>
                     <div class="faq-answer">
                         はい。むしろITに馴染みのない経営者の方こそ対象です。専門用語は使わず、実業務を通じてAIの使いどころを理解していただけます。
                     </div>
-                </div>
+                </article>
 
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h3>Q. 業種や会社規模に制限はありますか?</h3>
-                        <span class="faq-toggle">▼</span>
-                    </div>
+                <article class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false">
+                        業種や会社規模に制限はありますか？
+                        <span aria-hidden="true"></span>
+                    </button>
                     <div class="faq-answer">
                         特にございません。中小企業から上場企業まで、経営者の方であればAIを体験いただけます。
                     </div>
-                </div>
+                </article>
 
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h3>Q. 機密情報の扱いが不安です。</h3>
-                        <span class="faq-toggle">▼</span>
-                    </div>
+                <article class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false">
+                        機密情報の扱いが不安です。
+                        <span aria-hidden="true"></span>
+                    </button>
                     <div class="faq-answer">
                         ヒアリング内容や業務情報は厳重に管理いたします。必要に応じて秘密保持契約(NDA)の締結も可能です。
                     </div>
-                </div>
+                </article>
 
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h3>Q. どのように始めたらよいですか?</h3>
-                        <span class="faq-toggle">▼</span>
-                    </div>
+                <article class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false">
+                        どのように始めたらよいですか？
+                        <span aria-hidden="true"></span>
+                    </button>
                     <div class="faq-answer">
-                        まずはお気軽にお問い合わせください。担当者がサービスの詳細をご説明し、最適なプランをご提案させていただきます。
+                        まずはお気軽にお問い合わせください。担当者がサービスの詳細をご説明し、最適な進め方をご提案します。
                     </div>
-                </div>
+                </article>
+            </div>
+        </section>
+
+        <div class="section-cta">
+            <div class="container section-cta-inner">
+                <p>気になる点があれば、お気軽にお問い合わせください</p>
+                <button class="button button-primary button-consult" type="button" data-scroll-target="#contact">ご相談はこちら</button>
             </div>
         </div>
-    </section>
 
-    <!-- ============ フッター ============ -->
-    <section class="footer-content">
-        <div class="container">
-            <div class="footer-main">
-                <div class="footer-text">
-                    <h2><span style="color: #d4af37;">経営に集中</span>できる毎日へ</h2>
-                    <p>AIコンシェルジュは、経営者の皆さんの日々の業務をAIでサポートし、本来の経営業務に集中していただくためのサービスです。</p>
-                    <p>複雑に見えるAIも、実際に体験してみると、意外とシンプルで身近な存在。その体験からスタートしましょう。</p>
+        <section class="contact-section" id="contact">
+            <div class="container contact-layout">
+                <div class="contact-copy">
+                    <p class="section-label">Contact</p>
+                    <h2>AIを、経営のそばに。</h2>
+                    <p>
+                        AIコンシェルジュは、経営者の皆さんが本来の仕事に集中できるよう、
+                        実務に寄り添ったAI活用の第一歩をお手伝いします。
+                    </p>
                 </div>
-                <div class="footer-image">
-                    <img src="images/footer.jpeg" alt="フッター画像">
-                </div>
+
+                <figure class="contact-photo">
+                    <img src="images/footer.jpeg" alt="明るいオフィスで相談する担当者">
+                </figure>
             </div>
 
-            <div class="footer-info">
-                <div class="company-info">
+            <div class="container company-panel">
+                <div>
                     <h3>株式会社アグリード</h3>
                     <p>〒101-0044 東京都千代田区鍛冶町2-10-11 イマジクスビル8F</p>
                 </div>
 
-                <div class="company-info">
-                    <h3>お問い合わせ</h3>
-                    <div class="contact-links">
-                        <div>
-                            <strong>TEL:</strong> <a href="tel:0368244533">03-6824-4533</a>
-                        </div>
-                        <div>
-                            <strong>FAX:</strong> <a href="#">03-6634-5598</a>
-                        </div>
-                        <div>
-                            <strong>MAIL:</strong> <a href="mailto:info@aglead.co.jp">info@aglead.co.jp</a>
-                        </div>
-                        <div>
-                            <strong>URL:</strong> <a href="https://aglead.co.jp" target="_blank">https://aglead.co.jp</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="copyright">
-                    <p>&copy; 2026 AGLEAD INC. All rights reserved.</p>
-                </div>
+                <address class="contact-links">
+                    <a href="tel:0368244533">TEL: 03-6824-4533</a>
+                    <a href="https://aglead.co.jp" target="_blank" rel="noopener">WEB: aglead.co.jp</a>
+                </address>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <script>
-        function toggleFaq(element) {
-            const item = element.parentElement;
-            item.classList.toggle('active');
-        }
-    </script>
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 AGLEAD INC. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
